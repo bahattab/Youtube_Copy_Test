@@ -14,7 +14,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
        var blankSpaceVideo = Video()
         blankSpaceVideo.title = "Taylor Swift - Blank Space"
         blankSpaceVideo.thumnailImageName = "swift-youtube"
-        return [blankSpaceVideo]
+        
+        var badBloodVideo = Video()
+        badBloodVideo.title = "Taylor Swift - Bad Blood featuring Kendrick Lamar"
+        badBloodVideo.thumnailImageName = "taylor_swift_bad_blood"
+        
+        return [blankSpaceVideo, badBloodVideo]
     }()
     
     override func viewDidLoad() {
@@ -75,12 +80,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return videos.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellId", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellId", forIndexPath: indexPath) as! VideoCell
         
+        cell.video = videos[indexPath.item]
         return cell
     }
     

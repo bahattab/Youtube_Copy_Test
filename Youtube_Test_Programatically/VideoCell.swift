@@ -10,9 +10,20 @@ import UIKit
 
 class VideoCell: BaseCell {
     
+    var video: Video? {
+        didSet{
+            titleLabel.text = video?.title
+            thumbnailImageView.image = UIImage(named: (video?.thumnailImageName)!)
+        }
+    }
+    
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "swift-youtube")
+        
+        //When no image assigned we could use the following to test the layout
+        //imageView.backgroundColor = UIColor.blueColor()
+        
         imageView.contentMode = .ScaleAspectFill
         imageView.clipsToBounds = true
         return imageView
