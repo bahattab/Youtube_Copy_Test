@@ -51,6 +51,10 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         addSubview(collectionView)
         addConstrainstWithFormat("H:|[v0]|", views: collectionView)
         addConstrainstWithFormat("V:|[v0]|", views: collectionView)
+        
+        //Select the home button by default
+        let selectedIndexPath = NSIndexPath(forItem: 0, inSection: 0)
+        collectionView.selectItemAtIndexPath(selectedIndexPath, animated: false, scrollPosition: .None)
     }
     
     required init?(coder aDecoder: NSCoder) {
