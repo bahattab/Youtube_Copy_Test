@@ -33,6 +33,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
         
         setupMenuBar()
+        setupNavBarButtons()
         
     }
     
@@ -46,6 +47,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         view.addSubview(menuBar)
         view.addConstrainstWithFormat("H:|[v0]|", views: menuBar)
         view.addConstrainstWithFormat("V:|[v0(50)]", views: menuBar)
+        
+    }
+    
+    func setupNavBarButtons() {
+        let searchImage = UIImage(named: "search_icon")?.imageWithRenderingMode(.AlwaysOriginal)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .Plain, target: self, action: #selector(handleSearch))
+        navigationItem.rightBarButtonItems = [searchBarButtonItem]
+    }
+    
+    func handleSearch(){
         
     }
     
