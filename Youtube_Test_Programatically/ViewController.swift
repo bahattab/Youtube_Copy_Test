@@ -51,6 +51,7 @@ class VideoCell: UICollectionViewCell {
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.blueColor()
+        imageView.image = UIImage(named: "taylor-swift")
         return imageView
     }()
     
