@@ -20,13 +20,16 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     
     let cellId = "cellId"
+    let imageNames = ["home", "trending", "subscriptions", "account"]
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! MenuCell
+        
+        cell.imageView.image = UIImage(named: imageNames[indexPath.item])
         
         return cell
     }
@@ -59,7 +62,6 @@ class MenuCell: BaseCell {
     
     let imageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "home")
         return iv
     }()
     
