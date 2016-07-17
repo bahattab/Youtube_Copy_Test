@@ -44,8 +44,19 @@ class VideoCell: UICollectionViewCell {
         setUpViews()
     }
     
+    let thumbnailImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.blueColor()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     func setUpViews() {
-        backgroundColor = UIColor.redColor()
+        addSubview(thumbnailImageView)
+        
+        //Add Padding
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : thumbnailImageView]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : thumbnailImageView]))
         
     }
     
