@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: UICollectionViewController {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +17,24 @@ class HomeController: UICollectionViewController {
         
         collectionView?.backgroundColor = UIColor.whiteColor()
         
+        collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
+        
+    }
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellId", forIndexPath: indexPath)
+        
+        cell.backgroundColor = UIColor.redColor()
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(view.frame.width, 200)
     }
 
 
