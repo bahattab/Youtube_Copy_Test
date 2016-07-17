@@ -66,6 +66,14 @@ class VideoCell: UICollectionViewCell {
         addSubview(thumbnailImageView)
         addSubview(sepatorView)
         
+        //Cleaner way to do it
+        
+        addConstrainstWithFormat("H:|-16-[v0]-16-|", views: thumbnailImageView)
+        addConstrainstWithFormat("V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, sepatorView)
+        addConstrainstWithFormat("H:|[v0]|", views: sepatorView)
+
+        
+        /*One way to do it
         //Add Padding to Thumbnail Image
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : thumbnailImageView]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : thumbnailImageView]))
@@ -73,11 +81,24 @@ class VideoCell: UICollectionViewCell {
         //Add Constraints to Seperator Line
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : sepatorView]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : sepatorView]))
-        
+        */
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UIView {
+    func addConstrainstWithFormat(format: String, views: UIView...) {
+        var viewsDictionary = [String: UIView]()
+        
+        for(index, view) in views.enumerate(){
+            let key = "v\(index)"
+            viewsDictionary[key] = view
+        }
+        
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
 
