@@ -13,7 +13,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Home"
+        //Delete Translucent
+        navigationController?.navigationBar.translucent = false
+        
+        //Set new navigation item title
+        
+        let titleLabel = UILabel(frame: CGRectMake(0, 0, view.frame.width - 32, view.frame.height))
+        titleLabel.text = "Home"
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.font = UIFont.systemFontOfSize(20)
+        
+        navigationItem.titleView = titleLabel
         
         collectionView?.backgroundColor = UIColor.whiteColor()
         
