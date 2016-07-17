@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EC45C1A51D3BDBE20052DB78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1A41D3BDBE20052DB78 /* Extensions.swift */; };
 		EC45C1A81D3BDCC00052DB78 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */; };
+		EC45C1AB1D3BE0510052DB78 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */; };
 		ECE3764D1D3B9DCC00A40254 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3764C1D3B9DCC00A40254 /* AppDelegate.swift */; };
 		ECE3764F1D3B9DCC00A40254 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3764E1D3B9DCC00A40254 /* HomeController.swift */; };
 		ECE376521D3B9DCC00A40254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECE376501D3B9DCC00A40254 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		EC45C1A41D3BDBE20052DB78 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		ECE376491D3B9DCC00A40254 /* Youtube_Test_Programatically.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youtube_Test_Programatically.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECE3764C1D3B9DCC00A40254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECE3764E1D3B9DCC00A40254 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */,
+				EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -82,8 +85,8 @@
 		ECE3764B1D3B9DCC00A40254 /* Youtube_Test_Programatically */ = {
 			isa = PBXGroup;
 			children = (
-				EC45C1A91D3BDD030052DB78 /* Controller */,
 				EC45C1A61D3BDC840052DB78 /* View */,
+				EC45C1A91D3BDD030052DB78 /* Controller */,
 				EC45C1A31D3BDBBD0052DB78 /* Helpers */,
 				ECE3764C1D3B9DCC00A40254 /* AppDelegate.swift */,
 				ECE376501D3B9DCC00A40254 /* Main.storyboard */,
@@ -170,6 +173,7 @@
 				EC45C1A81D3BDCC00052DB78 /* VideoCell.swift in Sources */,
 				EC45C1A51D3BDBE20052DB78 /* Extensions.swift in Sources */,
 				ECE3764D1D3B9DCC00A40254 /* AppDelegate.swift in Sources */,
+				EC45C1AB1D3BE0510052DB78 /* MenuBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
