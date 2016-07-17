@@ -51,13 +51,17 @@ class VideoCell: UICollectionViewCell {
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.blueColor()
-        imageView.image = UIImage(named: "taylor-swift")
+        imageView.image = UIImage(named: "swift-youtube")
+        imageView.contentMode = .ScaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.greenColor()
+        imageView.image = UIImage(named: "swift-profile")
+
         return imageView
     }()
     
