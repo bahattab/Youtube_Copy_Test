@@ -55,12 +55,24 @@ class VideoCell: UICollectionViewCell {
         return imageView
     }()
     
+    let sepatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.blackColor()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     func setUpViews() {
         addSubview(thumbnailImageView)
+        addSubview(sepatorView)
         
-        //Add Padding
+        //Add Padding to Thumbnail Image
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : thumbnailImageView]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : thumbnailImageView]))
+        
+        //Add Constraints to Seperator Line
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : sepatorView]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[v0(1)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : sepatorView]))
         
     }
     
