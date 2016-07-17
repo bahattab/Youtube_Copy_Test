@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension UIColor {
+    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor{
+        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,8 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 230/255, green: 32/255, blue: 31/255, alpha: 1)
+        UINavigationBar.appearance().barTintColor = UIColor.rgb(230, green: 32, blue: 31)
         
         application.statusBarStyle = .LightContent
+        
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = UIColor.rgb(194, green: 31, blue: 31)
+        
+        window?.addSubview(statusBarBackgroundView)
+        window?.addConstrainstWithFormat("H:|[v0]|", views: statusBarBackgroundView)
+        window?.addConstrainstWithFormat("V:|[v0(20)]", views: statusBarBackgroundView)
         
         return true
     }
