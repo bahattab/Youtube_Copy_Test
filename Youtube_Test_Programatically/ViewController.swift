@@ -32,7 +32,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, 200)
+        
+        //To display videos, they should have a ratio of 16/9
+        //We substract the padding and apply the ratio.
+        let height = (view.frame.width - 16 - 16) * 9/16
+        //For the final height we have to add the contribution of the other elements
+        return CGSizeMake(view.frame.width, height + 16 + 68)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
