@@ -13,7 +13,15 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet{
             titleLabel.text = video?.title
-            thumbnailImageView.image = UIImage(named: (video?.thumnailImageName)!)
+            if let thumbnailImage = video?.thumnailImageName {
+                thumbnailImageView.image = UIImage(named: thumbnailImage)
+            }
+            
+            if let profileImage = video?.channel?.profileImageName {
+                userProfileImageView.image = UIImage(named: profileImage)
+                subtitleTextView.text = video?.channel?.name
+            }
+            
         }
     }
     
@@ -31,7 +39,7 @@ class VideoCell: BaseCell {
     
     let userProfileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "swift-profile")
+        imageView.image = UIImage(named: "taylor_swift_profile")
         
         //The image is displayed in a circle form
         //Half of the width and height, Width and height equal to 44.

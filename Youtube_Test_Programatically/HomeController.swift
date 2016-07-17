@@ -11,13 +11,20 @@ import UIKit
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var videos: [Video] = {
+        
+        var kanyeChannel = Channel()
+        kanyeChannel.name = "KanyeIsTheBestChannel"
+        kanyeChannel.profileImageName = "kanye_profile"
+        
        var blankSpaceVideo = Video()
         blankSpaceVideo.title = "Taylor Swift - Blank Space"
         blankSpaceVideo.thumnailImageName = "swift-youtube"
+        blankSpaceVideo.channel = kanyeChannel
         
         var badBloodVideo = Video()
         badBloodVideo.title = "Taylor Swift - Bad Blood featuring Kendrick Lamar"
         badBloodVideo.thumnailImageName = "taylor_swift_bad_blood"
+        badBloodVideo.channel = kanyeChannel
         
         return [blankSpaceVideo, badBloodVideo]
     }()
