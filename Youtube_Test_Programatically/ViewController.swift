@@ -67,6 +67,13 @@ class VideoCell: UICollectionViewCell {
         return label
     }()
     
+    let subtitleTextView: UITextView = {
+        let textView = UITextView()
+        textView.backgroundColor = UIColor.redColor()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        return textView
+    }()
+    
     let sepatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.blackColor()
@@ -78,6 +85,7 @@ class VideoCell: UICollectionViewCell {
         addSubview(userProfileImageView)
         addSubview(sepatorView)
         addSubview(titleLabel)
+        addSubview(subtitleTextView)
         
         //Cleaner way to do it
         
@@ -87,18 +95,33 @@ class VideoCell: UICollectionViewCell {
         addConstrainstWithFormat("V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView,userProfileImageView, sepatorView)
         addConstrainstWithFormat("H:|[v0]|", views: sepatorView)
         
-        
-        //Top Constraint for Title Label
+        //Constraints for Title Label
+        //Top
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Top, relatedBy: .Equal, toItem: thumbnailImageView, attribute: .Bottom, multiplier: 1, constant: 8))
         
-        //Left Constraint for Title Label
+        //Left
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Left, relatedBy: .Equal, toItem: userProfileImageView, attribute: .Right, multiplier: 1, constant: 8))
         
-        //Right Constraint for Title Label
+        //Right
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: thumbnailImageView, attribute: .Right, multiplier: 1, constant: 0))
         
-        //Height Constraint for Title Label
+        //Height
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0, constant: 20))
+        
+        //Constraints for SubTitle Text View
+        //Top
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .Top, relatedBy: .Equal, toItem: titleLabel, attribute: .Bottom, multiplier: 1, constant: 8))
+        
+        //Left
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .Left, relatedBy: .Equal, toItem: userProfileImageView, attribute: .Right, multiplier: 1, constant: 8))
+        
+        //Right
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .Right, relatedBy: .Equal, toItem: thumbnailImageView, attribute: .Right, multiplier: 1, constant: 0))
+        
+        //Height
+        addConstraint(NSLayoutConstraint(item: subtitleTextView, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0, constant: 20))
+        
+        
         /*One way to do it
         //Add Padding to Thumbnail Image
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-16-[v0]-16-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0" : thumbnailImageView]))
