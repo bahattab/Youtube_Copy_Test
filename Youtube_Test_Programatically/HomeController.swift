@@ -29,6 +29,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.registerClass(VideoCell.self, forCellWithReuseIdentifier: "cellId")
         
+        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
+        
         setupMenuBar()
         
     }
