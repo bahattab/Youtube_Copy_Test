@@ -30,6 +30,23 @@ class VideoCell: BaseCell {
                 subtitleTextView.text = subtitleText
             }
             
+            //Measure the title text
+            //It sets different contraints heights when the text is either short or long.
+            if let title = video?.title {
+                //For the height an arbitrary huge number
+                let size = CGSizeMake(frame.width - 16 - 44 - 8 - 16, 1000)
+                let options = NSStringDrawingOptions.UsesFontLeading.union(.UsesLineFragmentOrigin)
+                let estimatedRect = NSString(string: title).boundingRectWithSize(size, options: options, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(14)], context: nil)
+                
+                if estimatedRect.size.height > 20 {
+                    titleHeightConstraint?.constant = 44
+                }
+                else{
+                    titleHeightConstraint?.constant = 20
+                }
+                
+            }
+            
         }
     }
     
@@ -61,6 +78,7 @@ class VideoCell: BaseCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Taylor Swift - Black Space"
+        label.numberOfLines = 2
         return label
     }()
     
@@ -81,6 +99,8 @@ class VideoCell: BaseCell {
         return view
     }()
     
+    var titleHeightConstraint: NSLayoutConstraint?
+    
     override func setUpViews() {
         addSubview(thumbnailImageView)
         addSubview(userProfileImageView)
@@ -93,7 +113,7 @@ class VideoCell: BaseCell {
         addConstrainstWithFormat("H:|-16-[v0]-16-|", views: thumbnailImageView)
         addConstrainstWithFormat("H:|-16-[v0(44)]", views: userProfileImageView)
         
-        addConstrainstWithFormat("V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView,userProfileImageView, sepatorView)
+        addConstrainstWithFormat("V:|-16-[v0]-8-[v1(44)]-36-[v2(1)]|", views: thumbnailImageView,userProfileImageView, sepatorView)
         addConstrainstWithFormat("H:|[v0]|", views: sepatorView)
         
         //Constraints for Title Label
@@ -107,7 +127,11 @@ class VideoCell: BaseCell {
         addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Right, relatedBy: .Equal, toItem: thumbnailImageView, attribute: .Right, multiplier: 1, constant: 0))
         
         //Height
-        addConstraint(NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0, constant: 20))
+        /*
+        titleHeightConstraint = NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0, constant: 20)
+         */
+        titleHeightConstraint = NSLayoutConstraint(item: titleLabel, attribute: .Height, relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 0, constant: 44)
+        addConstraint(titleHeightConstraint!)
         
         //Constraints for SubTitle Text View
         //Top

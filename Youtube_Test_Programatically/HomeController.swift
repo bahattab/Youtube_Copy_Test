@@ -105,7 +105,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         //We substract the padding and apply the ratio.
         let height = (view.frame.width - 16 - 16) * 9/16
         //For the final height we have to add the contribution of the other elements
-        return CGSizeMake(view.frame.width, height + 16 + 68)
+        //80 = 8  + 36 + 44
+        return CGSizeMake(view.frame.width, height + 16 + 88)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
