@@ -17,7 +17,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.backgroundColor = UIColor.whiteColor()
         
-        collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView?.registerClass(VideoCell.self, forCellWithReuseIdentifier: "cellId")
         
     }
     
@@ -28,8 +28,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellId", forIndexPath: indexPath)
         
-        cell.backgroundColor = UIColor.redColor()
-        
         return cell
     }
     
@@ -38,5 +36,21 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
 
 
+}
+
+class VideoCell: UICollectionViewCell {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpViews()
+    }
+    
+    func setUpViews() {
+        backgroundColor = UIColor.redColor()
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
