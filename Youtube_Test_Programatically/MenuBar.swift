@@ -65,6 +65,18 @@ class MenuCell: BaseCell {
         return iv
     }()
     
+    override var highlighted: Bool {
+        didSet {
+            imageView.tintColor = highlighted ? UIColor.whiteColor() : UIColor.rgb(91, green: 14, blue: 13)
+        }
+    }
+    
+    override var selected: Bool {
+        didSet {
+            imageView.tintColor = selected ? UIColor.whiteColor() : UIColor.rgb(91, green: 14, blue: 13)
+        }
+    }
+    
     override func setUpViews() {
         //super.setUpViews()
         
