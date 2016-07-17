@@ -28,8 +28,6 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
         
-        cell.backgroundColor = UIColor.blueColor()
-        
         return cell
     }
     
@@ -45,7 +43,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.registerClass(MenuCell.self, forCellWithReuseIdentifier: cellId)
         
         addSubview(collectionView)
         addConstrainstWithFormat("H:|[v0]|", views: collectionView)
@@ -56,3 +54,13 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class MenuCell: BaseCell {
+    override func setUpViews() {
+        //super.setUpViews()
+        
+        backgroundColor = UIColor.yellowColor()
+    }
+}
+
+

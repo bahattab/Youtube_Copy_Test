@@ -10,6 +10,7 @@
 		EC45C1A51D3BDBE20052DB78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1A41D3BDBE20052DB78 /* Extensions.swift */; };
 		EC45C1A81D3BDCC00052DB78 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */; };
 		EC45C1AB1D3BE0510052DB78 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */; };
+		EC45C1AD1D3BEDC50052DB78 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1AC1D3BEDC50052DB78 /* BaseCell.swift */; };
 		ECE3764D1D3B9DCC00A40254 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3764C1D3B9DCC00A40254 /* AppDelegate.swift */; };
 		ECE3764F1D3B9DCC00A40254 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3764E1D3B9DCC00A40254 /* HomeController.swift */; };
 		ECE376521D3B9DCC00A40254 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECE376501D3B9DCC00A40254 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		EC45C1A41D3BDBE20052DB78 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		EC45C1AC1D3BEDC50052DB78 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		ECE376491D3B9DCC00A40254 /* Youtube_Test_Programatically.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youtube_Test_Programatically.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECE3764C1D3B9DCC00A40254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECE3764E1D3B9DCC00A40254 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		EC45C1A61D3BDC840052DB78 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EC45C1AC1D3BEDC50052DB78 /* BaseCell.swift */,
 				EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */,
 				EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */,
 			);
@@ -173,6 +176,7 @@
 				EC45C1A81D3BDCC00052DB78 /* VideoCell.swift in Sources */,
 				EC45C1A51D3BDBE20052DB78 /* Extensions.swift in Sources */,
 				ECE3764D1D3B9DCC00A40254 /* AppDelegate.swift in Sources */,
+				EC45C1AD1D3BEDC50052DB78 /* BaseCell.swift in Sources */,
 				EC45C1AB1D3BE0510052DB78 /* MenuBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
