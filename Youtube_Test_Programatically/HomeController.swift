@@ -139,32 +139,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
-    let blackView = UIView()
+    let settingsLauncher = SettingsLauncher()
     
     func handleMore(){
-        
-        //Create the illussion that the window is transparent black.
-        if let window = UIApplication.sharedApplication().keyWindow {
-            
-            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-            
-            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-            
-            window.addSubview(blackView)
-            blackView.frame = window.frame
-            blackView.alpha = 0
-            
-            UIView.animateWithDuration(0.5, animations: {
-                self.blackView.alpha = 1
-            })
-        }
-        
-    }
-    
-    func handleDismiss(){
-        UIView.animateWithDuration(0.5) { 
-            self.blackView.alpha = 0
-        }
+        //Show Menu
+        settingsLauncher.showSettings()
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
