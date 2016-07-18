@@ -13,6 +13,7 @@ class VideoCell: BaseCell {
     var video: Video? {
         didSet{
             titleLabel.text = video?.title
+            
             if let thumbnailImage = video?.thumnailImageName {
                 thumbnailImageView.image = UIImage(named: thumbnailImage)
             }

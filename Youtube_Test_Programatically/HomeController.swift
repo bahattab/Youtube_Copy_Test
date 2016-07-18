@@ -10,7 +10,7 @@ import UIKit
 
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var videos: [Video] = {
+    /*var videos: [Video] = {
         
         var kanyeChannel = Channel()
         kanyeChannel.name = "KanyeIsTheBestChannel"
@@ -30,9 +30,18 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         return [blankSpaceVideo, badBloodVideo]
     }()
+     */
+    
+    var videos: [Video]?
+ 
+    
+    //var videos: [Video]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Fetch Videos
+        fetchVideos()
         
         //Delete Translucent
         navigationController?.navigationBar.translucent = false
@@ -63,6 +72,39 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         return nb
     }()
     
+    func fetchVideos(){
+        let url = NSURL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
+        NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+            
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
+                
+                self.videos = [Video]()
+                
+                for dictionary in json as! [[String: AnyObject]] {
+                    //print(dictionary["title"])
+                    let video = Video()
+                    video.title = dictionary["title"] as? String
+                    self.videos?.append(video)
+                    
+                }
+                
+                self.collectionView?.reloadData()
+
+            } catch let jsonError {
+                print(jsonError)
+            }
+            
+            
+            
+        }.resume()
+    }
+    
     private func setupMenuBar(){
         
         view.addSubview(menuBar)
@@ -89,13 +131,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos.count
+        
+        return videos?.count ?? 0
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellId", forIndexPath: indexPath) as! VideoCell
         
-        cell.video = videos[indexPath.item]
+        cell.video = videos?[indexPath.item]
         return cell
     }
     
@@ -105,7 +148,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         //We substract the padding and apply the ratio.
         let height = (view.frame.width - 16 - 16) * 9/16
         //For the final height we have to add the contribution of the other elements
-        //80 = 8  + 36 + 44
+        //88 = 8  + 36 + 44
         return CGSizeMake(view.frame.width, height + 16 + 88)
     }
     
