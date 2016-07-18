@@ -141,6 +141,19 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func handleMore(){
         
+        //Create the illussion that the window is transparent black.
+        if let window = UIApplication.sharedApplication().keyWindow {
+            let blackView = UIView()
+            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+            window.addSubview(blackView)
+            blackView.frame = window.frame
+            blackView.alpha = 0
+            
+            UIView.animateWithDuration(0.5, animations: {
+                blackView.alpha = 1
+            })
+        }
+        
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
