@@ -69,6 +69,14 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(collectionView.frame.width, 50)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+    
     
     override init(){
         super.init()
@@ -76,6 +84,6 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.registerClass(SettingCell.self, forCellWithReuseIdentifier: cellId)
     }
 }
