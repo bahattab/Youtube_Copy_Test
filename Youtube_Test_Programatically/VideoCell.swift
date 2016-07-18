@@ -15,11 +15,7 @@ class VideoCell: BaseCell {
             titleLabel.text = video?.title
             
             setupThumbnailImage()
-            
-            if let profileImage = video?.channel?.profileImageName {
-                userProfileImageView.image = UIImage(named: profileImage)
-                
-            }
+            setupProfileImage()
             
             if let channelName = video?.channel?.name, numberOfViews = video?.numberOfViews {
                 let numberFormatter = NSNumberFormatter()
@@ -49,25 +45,15 @@ class VideoCell: BaseCell {
         }
     }
     
+    func setupProfileImage() {
+        if let profileImageURL = video?.channel?.profileImageName{
+            userProfileImageView.loadImageUsingString(profileImageURL)
+        }
+    }
+    
     func setupThumbnailImage() {
         if let thumbnailImageURL = video?.thumnailImageName {
-            
-            let url = NSURL(string: thumbnailImageURL)
-            
-            NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data, response, error) in
-                
-                if error != nil {
-                    print(error)
-                    return
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.thumbnailImageView.image = UIImage(data: data!)
-                })
-                
-
-            }).resume()
-            
+            thumbnailImageView.loadImageUsingString(thumbnailImageURL)
         }
     }
     
@@ -91,6 +77,7 @@ class VideoCell: BaseCell {
         //Half of the width and height, Width and height equal to 44.
         imageView.layer.cornerRadius = 22
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .ScaleAspectFill
         
         return imageView
     }()
