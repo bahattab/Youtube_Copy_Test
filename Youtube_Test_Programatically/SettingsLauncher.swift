@@ -73,13 +73,17 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         
     }
     
-    func handleDismiss(){
-        UIView.animateWithDuration(0.5) {
+    func handleDismiss(setting: Setting){
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .CurveEaseOut, animations: {
             self.blackView.alpha = 0
             
             if let window = UIApplication.sharedApplication().keyWindow {
                 self.collectionView.frame = CGRectMake(0, window.frame.height, self.collectionView.frame.width, self.collectionView.frame.height)
-
+                
+            }
+        }) { (completed: Bool) in
+            if setting.name != "Cancel" && setting.name != "" {
+                self.homeController?.showControllerForSetting(setting)
             }
         }
     }
@@ -103,19 +107,10 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .CurveEaseOut, animations: {
-            self.blackView.alpha = 0
-            
-            if let window = UIApplication.sharedApplication().keyWindow {
-                self.collectionView.frame = CGRectMake(0, window.frame.height, self.collectionView.frame.width, self.collectionView.frame.height)
-                
-            }
-        }) { (completed: Bool) in
-            let setting = self.settings[indexPath.item]
-            if setting.name != "Cancel" {
-                self.homeController?.showControllerForSetting(setting)
-            }
-        }
+        let setting = self.settings[indexPath.item]
+        
+        handleDismiss(setting)
+        
     }
     
     override init(){
