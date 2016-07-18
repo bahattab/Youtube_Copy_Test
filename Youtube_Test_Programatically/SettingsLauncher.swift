@@ -20,6 +20,8 @@ class Setting: NSObject {
 
 class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    var homeController: HomeController?
+    
     let blackView = UIView()
     
     let collectionView: UICollectionView = {
@@ -99,6 +101,21 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         return 0
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .CurveEaseOut, animations: {
+            self.blackView.alpha = 0
+            
+            if let window = UIApplication.sharedApplication().keyWindow {
+                self.collectionView.frame = CGRectMake(0, window.frame.height, self.collectionView.frame.width, self.collectionView.frame.height)
+                
+            }
+        }) { (completed: Bool) in
+            let setting = self.settings[indexPath.item]
+            self.homeController?.showControllerForSetting(setting)
+        }
+        
+    }
     
     override init(){
         super.init()
