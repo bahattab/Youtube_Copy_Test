@@ -10,9 +10,20 @@ import UIKit
 
 class SettingCell: BaseCell {
     
+    var setting: Setting? {
+        didSet {
+            nameLabel.text = setting?.name
+            
+            if let imageName = setting?.imageName {
+                iconImageView.image = UIImage(named: imageName)
+            }
+        }
+    }
+    
     let nameLabel: UILabel = {
        let label = UILabel()
         label.text = "Setting"
+        label.font = UIFont.systemFontOfSize(13)
         return label
     }()
     
