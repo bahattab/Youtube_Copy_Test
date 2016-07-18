@@ -15,8 +15,17 @@ class SettingCell: BaseCell {
             nameLabel.text = setting?.name
             
             if let imageName = setting?.imageName {
-                iconImageView.image = UIImage(named: imageName)
+                iconImageView.image = UIImage(named: imageName)?.imageWithRenderingMode(.AlwaysTemplate)
+                iconImageView.tintColor = UIColor.darkGrayColor()
             }
+        }
+    }
+    
+    override var highlighted: Bool {
+        didSet{
+            backgroundColor = highlighted ? UIColor.darkGrayColor() : UIColor.whiteColor()
+            nameLabel.textColor = highlighted ? UIColor.whiteColor() : UIColor.blackColor()
+            iconImageView.tintColor = highlighted ? UIColor.whiteColor() : UIColor.darkGrayColor()
         }
     }
     
