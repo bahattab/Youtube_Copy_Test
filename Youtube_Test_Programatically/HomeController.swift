@@ -90,6 +90,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     //print(dictionary["title"])
                     let video = Video()
                     video.title = dictionary["title"] as? String
+                    video.thumnailImageName = dictionary["thumbnail_image_name"] as? String
                     self.videos?.append(video)
                     
                 }
