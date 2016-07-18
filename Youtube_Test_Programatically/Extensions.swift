@@ -30,9 +30,17 @@ extension UIView {
 
 let imageCache = NSCache()
 
-extension UIImageView {
+class CustomImageView: UIImageView {
+    
+    var imageUrlString: String?
+    
     func loadImageUsingString(urlString: String){
+        
+        imageUrlString = urlString
+        
         let url = NSURL(string: urlString)
+        
+        image = nil
         
         if let imageFromCache = imageCache.objectForKey(urlString) as? UIImage{
             self.image = imageFromCache
@@ -50,9 +58,11 @@ extension UIImageView {
                 
                 let imageToCache = UIImage(data: data!)
                 
+                if self.imageUrlString == urlString {
+                    self.image = imageToCache
+                }
                 imageCache.setObject(imageToCache!, forKey: urlString)
                 
-                self.image = imageToCache
             })
             
             
