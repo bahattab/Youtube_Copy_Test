@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC3F5BCB1D3E326600F9516E /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F5BCA1D3E326600F9516E /* FeedCell.swift */; };
 		EC45C1A51D3BDBE20052DB78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1A41D3BDBE20052DB78 /* Extensions.swift */; };
 		EC45C1A81D3BDCC00052DB78 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */; };
 		EC45C1AB1D3BE0510052DB78 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC3F5BCA1D3E326600F9516E /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		EC45C1A41D3BDBE20052DB78 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */,
 				EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */,
 				ECA5ADDE1D3D2CE400B34F9F /* SettingCell.swift */,
+				EC3F5BCA1D3E326600F9516E /* FeedCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				EC45C1A81D3BDCC00052DB78 /* VideoCell.swift in Sources */,
 				EC45C1A51D3BDBE20052DB78 /* Extensions.swift in Sources */,
 				ECE3764D1D3B9DCC00A40254 /* AppDelegate.swift in Sources */,
+				EC3F5BCB1D3E326600F9516E /* FeedCell.swift in Sources */,
 				ECA5ADDD1D3D17D500B34F9F /* SettingsLauncher.swift in Sources */,
 				EC45C1AD1D3BEDC50052DB78 /* BaseCell.swift in Sources */,
 				ECFD00F81D3E1404001AB9D8 /* ApiService.swift in Sources */,
