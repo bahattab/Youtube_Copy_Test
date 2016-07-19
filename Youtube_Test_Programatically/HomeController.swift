@@ -63,8 +63,9 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
-    let menuBar: MenuBar = {
+    lazy var menuBar: MenuBar = {
         let nb = MenuBar()
+        nb.homeController = self
         return nb
     }()
     
@@ -127,6 +128,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
+    func scrollToMenuIndex(menuIndex: Int){
+        let indexPath = NSIndexPath(forItem: menuIndex, inSection: 0)
+        collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
+    }
+    
     lazy var settingsLauncher: SettingsLauncher = {
         let launcher = SettingsLauncher()
         launcher.homeController = self
@@ -153,6 +159,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         menuBar.horizontalBarLerftAnchorConstraint?.constant = scrollView.contentOffset.x / 4
+        print(scrollView.contentOffset.x)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
