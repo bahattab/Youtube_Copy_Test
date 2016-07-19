@@ -73,49 +73,10 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }()
     
     func fetchVideos(){
-        let url = NSURL(string: "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json")
-        NSURLSession.sharedSession().dataTaskWithURL(url!) { (data, response, error) in
-            
-            if error != nil {
-                print(error)
-                return
-            }
-            
-            do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
-                
-                self.videos = [Video]()
-                
-                for dictionary in json as! [[String: AnyObject]] {
-                    //print(dictionary["title"])
-                    let video = Video()
-                    video.title = dictionary["title"] as? String
-                    video.thumnailImageName = dictionary["thumbnail_image_name"] as? String
-                    
-                    let channelDictionary = dictionary["channel"] as! [String: AnyObject]
-                    
-                    let channel = Channel()
-                    channel.name = channelDictionary["name"] as? String
-                    channel.profileImageName = channelDictionary["profile_image_name"] as? String
-                    
-                    video.channel = channel
-                    
-                    self.videos?.append(video)
-                    
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.collectionView?.reloadData()
-                })
-                
-
-            } catch let jsonError {
-                print(jsonError)
-            }
-            
-            
-            
-        }.resume()
+        ApiService.sharedInstance.fetchVideos { (videos: [Video]) in
+            self.videos = videos
+            self.collectionView?.reloadData()
+        }
     }
     
     private func setupMenuBar(){
