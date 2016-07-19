@@ -72,6 +72,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .Horizontal
+            flowLayout.minimumLineSpacing = 0
         }
         
         collectionView?.backgroundColor = UIColor.whiteColor()
@@ -81,6 +82,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+        
+        collectionView?.pagingEnabled = true
     }
     
     func fetchVideos(){
@@ -148,13 +151,20 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.pushViewController(dummySettingsViewController, animated: true)
     }
     
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        menuBar.horizontalBarLerftAnchorConstraint?.constant = scrollView.contentOffset.x / 4
+    }
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
-        cell.backgroundColor = UIColor.blueColor()
+        
+        let colors: [UIColor] = [.blueColor(), .greenColor(), UIColor.grayColor(), UIColor.purpleColor()]
+        
+        cell.backgroundColor = colors[indexPath.item]
         return cell
     }
     
