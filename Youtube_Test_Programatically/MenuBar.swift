@@ -85,6 +85,11 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let x = CGFloat(indexPath.item) * frame.width / 4
         horizontalBarLerftAnchorConstraint?.constant = x
+        
+        UIView.animateWithDuration(0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .CurveEaseOut, animations: {
+            self.layoutIfNeeded()
+
+            }, completion: nil)
     }
 }
 
