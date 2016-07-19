@@ -49,7 +49,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         //Set new navigation item title
         
         let titleLabel = UILabel(frame: CGRectMake(0, 0, view.frame.width - 32, view.frame.height))
-        titleLabel.text = "Home"
+        titleLabel.text = "  Home"
         titleLabel.textColor = UIColor.whiteColor()
         titleLabel.font = UIFont.systemFontOfSize(20)
         
@@ -120,9 +120,22 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     private func setupMenuBar(){
         
+        navigationController?.hidesBarsOnSwipe = true
+        
+        let redView = UIView()
+        
+        redView.backgroundColor = UIColor.rgb(230, green: 32, blue: 31)
+        view.addSubview(redView)
+        view.addConstrainstWithFormat("H:|[v0]|", views: redView)
+        view.addConstrainstWithFormat("V:[v0(50)]", views: redView)
+
+        
         view.addSubview(menuBar)
         view.addConstrainstWithFormat("H:|[v0]|", views: menuBar)
-        view.addConstrainstWithFormat("V:|[v0(50)]", views: menuBar)
+        view.addConstrainstWithFormat("V:[v0(50)]", views: menuBar)
+        
+        //To hide the MenuBar when we scroll down
+        menuBar.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
         
     }
     
