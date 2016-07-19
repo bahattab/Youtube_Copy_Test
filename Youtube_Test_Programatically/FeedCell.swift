@@ -20,9 +20,19 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     }()
     
     let cellId = "cellId"
+    var videos: [Video]?
+    
+    func fetchVideos(){
+        ApiService.sharedInstance.fetchVideos { (videos: [Video]) in
+            self.videos = videos
+            self.collectionView.reloadData()
+        }
+    }
     
     override func setUpViews() {
         super.setUpViews()
+        
+        fetchVideos()
         
         addSubview(collectionView)
         addConstrainstWithFormat("H:|[v0]|", views: collectionView)
@@ -32,12 +42,28 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        
+        return videos?.count ?? 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellId", forIndexPath: indexPath) as! VideoCell
         
+        cell.video = videos?[indexPath.item]
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        //To display videos, they should have a ratio of 16/9
+        //We substract the padding and apply the ratio.
+        let height = (frame.width - 16 - 16) * 9/16
+        //For the final height we have to add the contribution of the other elements
+        //88 = 8  + 36 + 44
+        return CGSizeMake(frame.width, height + 16 + 88)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
     }
 }

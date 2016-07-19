@@ -34,16 +34,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }()
      */
     
-    var videos: [Video]?
- 
-    
-    //var videos: [Video]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Fetch Videos
-        fetchVideos()
         
         //Delete Translucent
         navigationController?.navigationBar.translucent = false
@@ -89,12 +81,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.pagingEnabled = true
     }
     
-    func fetchVideos(){
-        ApiService.sharedInstance.fetchVideos { (videos: [Video]) in
-            self.videos = videos
-            self.collectionView?.reloadData()
-        }
-    }
     
     private func setupMenuBar(){
         
@@ -185,35 +171,6 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(view.frame.width, view.frame.height)
     }
-    
-    /*
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return videos?.count ?? 0
-    }
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellId", forIndexPath: indexPath) as! VideoCell
-        
-        cell.video = videos?[indexPath.item]
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        //To display videos, they should have a ratio of 16/9
-        //We substract the padding and apply the ratio.
-        let height = (view.frame.width - 16 - 16) * 9/16
-        //For the final height we have to add the contribution of the other elements
-        //88 = 8  + 36 + 44
-        return CGSizeMake(view.frame.width, height + 16 + 88)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 0
-    }
- */
 
 
 }
