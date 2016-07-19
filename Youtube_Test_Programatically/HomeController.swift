@@ -11,6 +11,7 @@ import UIKit
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    let titles = ["Home", "Trending", "Subscriptions", "Account"]
     
     /*var videos: [Video] = {
         
@@ -119,6 +120,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func scrollToMenuIndex(menuIndex: Int){
         let indexPath = NSIndexPath(forItem: menuIndex, inSection: 0)
         collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
+        setTitleForIndex(menuIndex)
+    }
+    
+    private func setTitleForIndex(index: Int) {
+        if let titleLabel = navigationItem.titleView as? UILabel {
+            titleLabel.text = "  \(titles[index])"
+        }
     }
     
     lazy var settingsLauncher: SettingsLauncher = {
@@ -156,6 +164,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let indexPath = NSIndexPath(forItem: index, inSection: 0)
         menuBar.collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .None)
         
+        
+        setTitleForIndex(index)
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -169,7 +179,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, view.frame.height)
+        return CGSizeMake(view.frame.width, view.frame.height - 50)
     }
 
 
