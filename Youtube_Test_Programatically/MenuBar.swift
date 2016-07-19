@@ -55,10 +55,28 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         //Select the home button by default
         let selectedIndexPath = NSIndexPath(forItem: 0, inSection: 0)
         collectionView.selectItemAtIndexPath(selectedIndexPath, animated: false, scrollPosition: .None)
+        
+        setupHorizontalBar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupHorizontalBar(){
+        let horizontalBarView = UIView()
+        horizontalBarView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(horizontalBarView)
+        
+        //New school way of laying out our views IOS9
+        //Need X, Y, width, height constaints
+        
+        horizontalBarView.leftAnchor.constraintEqualToAnchor(self.leftAnchor).active = true
+        horizontalBarView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
+        horizontalBarView.widthAnchor.constraintEqualToAnchor(self.widthAnchor, multiplier: 1/4).active = true
+        horizontalBarView.heightAnchor.constraintEqualToConstant(8).active = true
+        
     }
 }
 
