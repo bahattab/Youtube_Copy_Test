@@ -63,20 +63,28 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         fatalError("init(coder:) has not been implemented")
     }
     
+    var horizontalBarLerftAnchorConstraint: NSLayoutConstraint?
+    
     func setupHorizontalBar(){
         let horizontalBarView = UIView()
-        horizontalBarView.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        horizontalBarView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(horizontalBarView)
         
         //New school way of laying out our views IOS9
         //Need X, Y, width, height constaints
         
-        horizontalBarView.leftAnchor.constraintEqualToAnchor(self.leftAnchor).active = true
+        horizontalBarLerftAnchorConstraint = horizontalBarView.leftAnchor.constraintEqualToAnchor(self.leftAnchor)
+        horizontalBarLerftAnchorConstraint?.active = true
         horizontalBarView.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
         horizontalBarView.widthAnchor.constraintEqualToAnchor(self.widthAnchor, multiplier: 1/4).active = true
         horizontalBarView.heightAnchor.constraintEqualToConstant(8).active = true
         
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let x = CGFloat(indexPath.item) * frame.width / 4
+        horizontalBarLerftAnchorConstraint?.constant = x
     }
 }
 
