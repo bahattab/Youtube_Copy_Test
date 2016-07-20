@@ -23,7 +23,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     var videos: [Video]?
     
     func fetchVideos(){
-        ApiService.sharedInstance.fetchVideos { (videos: [Video]) in
+        ApiService.sharedInstance.fetchVideosHome { (videos: [Video]) in
             self.videos = videos
             self.collectionView.reloadData()
         }
@@ -33,7 +33,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         super.setUpViews()
         
         fetchVideos()
-        
+
         addSubview(collectionView)
         addConstrainstWithFormat("H:|[v0]|", views: collectionView)
         addConstrainstWithFormat("V:|[v0]|", views: collectionView)

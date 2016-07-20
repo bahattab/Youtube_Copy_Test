@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC0306B31D3F62FC0008FE35 /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0306B21D3F62FC0008FE35 /* TrendingCell.swift */; };
+		EC0306B51D3F671B0008FE35 /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0306B41D3F671B0008FE35 /* SubscriptionCell.swift */; };
 		EC3F5BCB1D3E326600F9516E /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F5BCA1D3E326600F9516E /* FeedCell.swift */; };
 		EC45C1A51D3BDBE20052DB78 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1A41D3BDBE20052DB78 /* Extensions.swift */; };
 		EC45C1A81D3BDCC00052DB78 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC0306B21D3F62FC0008FE35 /* TrendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
+		EC0306B41D3F671B0008FE35 /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		EC3F5BCA1D3E326600F9516E /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		EC45C1A41D3BDBE20052DB78 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EC45C1A71D3BDCC00052DB78 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				EC45C1AA1D3BE0510052DB78 /* MenuBar.swift */,
 				ECA5ADDE1D3D2CE400B34F9F /* SettingCell.swift */,
 				EC3F5BCA1D3E326600F9516E /* FeedCell.swift */,
+				EC0306B21D3F62FC0008FE35 /* TrendingCell.swift */,
+				EC0306B41D3F671B0008FE35 /* SubscriptionCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -209,8 +215,10 @@
 				ECE3764D1D3B9DCC00A40254 /* AppDelegate.swift in Sources */,
 				EC3F5BCB1D3E326600F9516E /* FeedCell.swift in Sources */,
 				ECA5ADDD1D3D17D500B34F9F /* SettingsLauncher.swift in Sources */,
+				EC0306B51D3F671B0008FE35 /* SubscriptionCell.swift in Sources */,
 				EC45C1AD1D3BEDC50052DB78 /* BaseCell.swift in Sources */,
 				ECFD00F81D3E1404001AB9D8 /* ApiService.swift in Sources */,
+				EC0306B31D3F62FC0008FE35 /* TrendingCell.swift in Sources */,
 				EC45C1B01D3C11DD0052DB78 /* Video.swift in Sources */,
 				EC45C1AB1D3BE0510052DB78 /* MenuBar.swift in Sources */,
 				ECA5ADDF1D3D2CE400B34F9F /* SettingCell.swift in Sources */,

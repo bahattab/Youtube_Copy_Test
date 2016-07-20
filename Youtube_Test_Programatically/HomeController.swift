@@ -11,6 +11,8 @@ import UIKit
 class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    let trendingCellId = "trendingCellId"
+    let subscriptionCellId = "subscriptionCellId"
     let titles = ["Home", "Trending", "Subscriptions", "Account"]
     
     /*var videos: [Video] = {
@@ -75,6 +77,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         //collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.registerClass(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.registerClass(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
+        collectionView?.registerClass(SubscriptionCell.self, forCellWithReuseIdentifier: subscriptionCellId)
         
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
@@ -173,6 +177,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        if indexPath.item == 1 {
+            return collectionView.dequeueReusableCellWithReuseIdentifier(trendingCellId, forIndexPath: indexPath)
+        } else if indexPath.item == 2{
+            return collectionView.dequeueReusableCellWithReuseIdentifier(subscriptionCellId, forIndexPath: indexPath)
+        }
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
         
         return cell
