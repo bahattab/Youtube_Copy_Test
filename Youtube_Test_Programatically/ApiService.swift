@@ -58,6 +58,14 @@ class ApiService: NSObject {
                         completion(videos)
                     })
                     
+                    //Examples of map
+                    /*
+                    let numbersArray = [1, 2 , 3]
+                    let doubleNumbersArray = numbersArray.map({return $0 * 2})
+                    let stringArray = numbersArray.map({return "\($0 * 2)"})
+                    */
+                    
+                    
                     //Not simplified version
                     /*var videos = [Video]()
                     
