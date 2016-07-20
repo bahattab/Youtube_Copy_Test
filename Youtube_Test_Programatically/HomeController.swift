@@ -13,6 +13,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     let cellId = "cellId"
     let trendingCellId = "trendingCellId"
     let subscriptionCellId = "subscriptionCellId"
+    let accountCellId = "accountCellId"
     let titles = ["Home", "Trending", "Subscriptions", "Account"]
     
     /*var videos: [Video] = {
@@ -79,6 +80,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.registerClass(FeedCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.registerClass(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
         collectionView?.registerClass(SubscriptionCell.self, forCellWithReuseIdentifier: subscriptionCellId)
+        collectionView?.registerClass(AccountCell.self, forCellWithReuseIdentifier: accountCellId)
         
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
@@ -89,7 +91,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     private func setupMenuBar(){
         
-        navigationController?.hidesBarsOnSwipe = true
+        //navigationController?.hidesBarsOnSwipe = true
         
         let redView = UIView()
         
@@ -178,13 +180,21 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        if indexPath.item == 1 {
-            return collectionView.dequeueReusableCellWithReuseIdentifier(trendingCellId, forIndexPath: indexPath)
+        let identifier: String
+        
+        if indexPath.item == 0 {
+            identifier = cellId
+        }
+        else if indexPath.item == 1 {
+            identifier = trendingCellId
         } else if indexPath.item == 2{
-            return collectionView.dequeueReusableCellWithReuseIdentifier(subscriptionCellId, forIndexPath: indexPath)
+            identifier = subscriptionCellId
+        }
+        else {
+            identifier = accountCellId
         }
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
         
         return cell
     }
