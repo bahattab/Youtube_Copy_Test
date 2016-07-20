@@ -49,33 +49,48 @@ class ApiService: NSObject {
             
             do {
                 
-                var videos = [Video]()
-                
-                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
-                
-                
-                for dictionary in json as! [[String: AnyObject]] {
-                    //print(dictionary["title"])
-                    let video = Video()
-                    //video.title = dictionary["title"] as? String
-                    //video.thumnailImageName = dictionary["thumbnail_image_name"] as? String
+                if let unwrappedData = data, jsonDictionaries = try NSJSONSerialization.JSONObjectWithData(unwrappedData, options: .MutableContainers) as? [[String: AnyObject]]{
                     
-                    video.setValuesForKeysWithDictionary(dictionary)
                     
-                    //It is simplified in Video Class
-                    /*let channelDictionary = dictionary["channel"] as! [String: AnyObject]
-                    let channel = Channel()
-                    channel.setValuesForKeysWithDictionary(channelDictionary)
-                    video.channel = channel
+                    //Simplified version
+                    let videos = jsonDictionaries.map({return Video(dictionary: $0)})
+                    dispatch_async(dispatch_get_main_queue(), {
+                        completion(videos)
+                    })
+                    
+                    //Not simplified version
+                    /*var videos = [Video]()
+                    
+                    for dictionary in jsonDictionaries {
+                        
+                            //print(dictionary["title"])
+                            //let video = Video()
+                            //video.title = dictionary["title"] as? String
+                            //video.thumnailImageName = dictionary["thumbnail_image_name"] as? String
+                            
+                            //video.setValuesForKeysWithDictionary(dictionary)
+                            
+                            //It is simplified in Video Class
+                            /*let channelDictionary = dictionary["channel"] as! [String: AnyObject]
+                             let channel = Channel()
+                             channel.setValuesForKeysWithDictionary(channelDictionary)
+                             video.channel = channel
+                             */
+                            
+                            let video = Video(dictionary: dictionary)
+                            videos.append(video)
+                            
+                        
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                        completion(videos)
+                        })
+                    }
                     */
-                    
-                    videos.append(video)
                     
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), {
-                    completion(videos)
-                })
+                
                 
                 
             } catch let jsonError {
