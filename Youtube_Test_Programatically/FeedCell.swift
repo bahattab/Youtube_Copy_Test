@@ -68,7 +68,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let videoLauncher = VideoLauncer()
+        let videoLauncher = VideoLauncher()
         videoLauncher.showVideoPlayer()
     }
 }

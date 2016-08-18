@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Youtube_Test_Programatically/VideoLauncher.swift"
-            timestampString = "492809755.639239"
+            timestampString = "493220232.812582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "init(frame:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -88,13 +88,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Youtube_Test_Programatically/VideoLauncher.swift"
-            timestampString = "492809755.639239"
+            timestampString = "493220232.812582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "VideoPlayerView"
-            landmarkType = "3">
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "activityIndicatorView"
+            landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Youtube_Test_Programatically/VideoLauncher.swift"
-            timestampString = "492809755.639239"
+            timestampString = "493220232.812582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "showVideoPlayer()"
             landmarkType = "5">
             <Locations>
