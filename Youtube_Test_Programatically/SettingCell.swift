@@ -15,31 +15,31 @@ class SettingCell: BaseCell {
             nameLabel.text = setting?.name.rawValue
             
             if let imageName = setting?.imageName {
-                iconImageView.image = UIImage(named: imageName)?.imageWithRenderingMode(.AlwaysTemplate)
-                iconImageView.tintColor = UIColor.darkGrayColor()
+                iconImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
+                iconImageView.tintColor = UIColor.darkGray
             }
         }
     }
     
-    override var highlighted: Bool {
+    override var isHighlighted: Bool {
         didSet{
-            backgroundColor = highlighted ? UIColor.darkGrayColor() : UIColor.whiteColor()
-            nameLabel.textColor = highlighted ? UIColor.whiteColor() : UIColor.blackColor()
-            iconImageView.tintColor = highlighted ? UIColor.whiteColor() : UIColor.darkGrayColor()
+            backgroundColor = isHighlighted ? UIColor.darkGray : UIColor.white
+            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
+            iconImageView.tintColor = isHighlighted ? UIColor.white : UIColor.darkGray
         }
     }
     
     let nameLabel: UILabel = {
        let label = UILabel()
         label.text = "Setting"
-        label.font = UIFont.systemFontOfSize(13)
+        label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
     
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "settings")
-        imageView.contentMode = .ScaleAspectFill
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -53,7 +53,7 @@ class SettingCell: BaseCell {
         addConstrainstWithFormat("V:|[v0]|", views: nameLabel)
         addConstrainstWithFormat("V:[v0(30)]", views: iconImageView)
         
-        addConstraint(NSLayoutConstraint(item: iconImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: iconImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
 
     }
 }

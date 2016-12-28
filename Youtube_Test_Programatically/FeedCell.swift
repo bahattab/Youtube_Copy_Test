@@ -13,7 +13,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.whiteColor()
+        cv.backgroundColor = UIColor.white
         cv.dataSource = self
         cv.delegate = self
         return cv
@@ -33,41 +33,42 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         super.setUpViews()
         
         fetchVideos()
+        
 
         addSubview(collectionView)
         addConstrainstWithFormat("H:|[v0]|", views: collectionView)
         addConstrainstWithFormat("V:|[v0]|", views: collectionView)
         
-        collectionView.registerClass(VideoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return videos?.count ?? 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellId", forIndexPath: indexPath) as! VideoCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! VideoCell
         
         cell.video = videos?[indexPath.item]
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         //To display videos, they should have a ratio of 16/9
         //We substract the padding and apply the ratio.
         let height = (frame.width - 16 - 16) * 9/16
         //For the final height we have to add the contribution of the other elements
         //88 = 8  + 36 + 44
-        return CGSizeMake(frame.width, height + 16 + 88)
+        return CGSize(width: frame.width, height: height + 16 + 88)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let videoLauncher = VideoLauncher()
         videoLauncher.showVideoPlayer()
     }

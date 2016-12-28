@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Youtube_Test_Programatically/BaseCell.swift"
-            timestampString = "490466840.520522"
+            timestampString = "503883548.399657"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
             landmarkName = "init(coder:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -40,13 +40,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Youtube_Test_Programatically/FeedCell.swift"
-            timestampString = "490652611.772394"
+            timestampString = "503883548.399657"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "setUpViews()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -62,23 +62,7 @@
             startingLineNumber = "94"
             endingLineNumber = "94"
             landmarkName = "setupMenuBar()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Youtube_Test_Programatically/VideoLauncher.swift"
-            timestampString = "493220232.812582"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "init(frame:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,55 +78,7 @@
             startingLineNumber = "17"
             endingLineNumber = "17"
             landmarkName = "activityIndicatorView"
-            landmarkType = "19">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Youtube_Test_Programatically/VideoLauncher.swift"
-            timestampString = "493220232.812582"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "showVideoPlayer()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Youtube_Test_Programatically.VideoLauncer.showVideoPlayer () -&gt; ()"
-                  moduleName = "Youtube_Test_Programatically"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fernandocardenasm/Documents/IOSApps/Youtube_Test_Programatically/Youtube_Test_Programatically/VideoLauncher.swift"
-                  timestampString = "492808914.921382"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "2327">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Youtube_Test_Programatically.VideoLauncer.(showVideoPlayer () -&gt; ()).(closure #2)"
-                  moduleName = "Youtube_Test_Programatically"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fernandocardenasm/Documents/IOSApps/Youtube_Test_Programatically/Youtube_Test_Programatically/VideoLauncher.swift"
-                  timestampString = "492808914.921648"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

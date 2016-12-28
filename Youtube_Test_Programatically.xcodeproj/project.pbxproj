@@ -176,6 +176,7 @@
 					ECE376481D3B9DCC00A40254 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ZXBK6BD56X;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -346,6 +347,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fernando.Youtube-Test-Programatically";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -357,6 +359,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fernando.Youtube-Test-Programatically";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -42,14 +42,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         super.viewDidLoad()
         
         //Delete Translucent
-        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.isTranslucent = false
         
         //Set new navigation item title
         
-        let titleLabel = UILabel(frame: CGRectMake(0, 0, view.frame.width - 32, view.frame.height))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "  Home"
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont.systemFontOfSize(20)
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
         
         navigationItem.titleView = titleLabel
         setupCollectionView()
@@ -68,28 +68,28 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func setupCollectionView() {
         
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .Horizontal
+            flowLayout.scrollDirection = .horizontal
             flowLayout.minimumLineSpacing = 0
         }
         
-        collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.backgroundColor = UIColor.white
         
         //collectionView?.registerClass(VideoCell.self, forCellWithReuseIdentifier: "cellId")
         //collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
-        collectionView?.registerClass(FeedCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.registerClass(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
-        collectionView?.registerClass(SubscriptionCell.self, forCellWithReuseIdentifier: subscriptionCellId)
-        collectionView?.registerClass(AccountCell.self, forCellWithReuseIdentifier: accountCellId)
+        collectionView?.register(FeedCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(TrendingCell.self, forCellWithReuseIdentifier: trendingCellId)
+        collectionView?.register(SubscriptionCell.self, forCellWithReuseIdentifier: subscriptionCellId)
+        collectionView?.register(AccountCell.self, forCellWithReuseIdentifier: accountCellId)
         
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
         
-        collectionView?.pagingEnabled = true
+        collectionView?.isPagingEnabled = true
     }
     
     
-    private func setupMenuBar(){
+    fileprivate func setupMenuBar(){
         
         //navigationController?.hidesBarsOnSwipe = true
         
@@ -106,16 +106,16 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         view.addConstrainstWithFormat("V:[v0(50)]", views: menuBar)
         
         //To hide the MenuBar when we scroll down
-        menuBar.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor).active = true
+        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         
     }
     
     func setupNavBarButtons() {
-        let searchImage = UIImage(named: "search_icon")?.imageWithRenderingMode(.AlwaysOriginal)
-        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .Plain, target: self, action: #selector(handleSearch))
+        let searchImage = UIImage(named: "search_icon")?.withRenderingMode(.alwaysOriginal)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         
-        let moreImage = UIImage(named: "nav_more_icon")?.imageWithRenderingMode(.AlwaysOriginal)
-        let moreButton = UIBarButtonItem(image:moreImage, style: .Plain, target: self, action: #selector(handleMore))
+        let moreImage = UIImage(named: "nav_more_icon")?.withRenderingMode(.alwaysOriginal)
+        let moreButton = UIBarButtonItem(image:moreImage, style: .plain, target: self, action: #selector(handleMore))
         navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
     }
     
@@ -123,13 +123,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
-    func scrollToMenuIndex(menuIndex: Int){
-        let indexPath = NSIndexPath(forItem: menuIndex, inSection: 0)
-        collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: true)
+    func scrollToMenuIndex(_ menuIndex: Int){
+        let indexPath = IndexPath(item: menuIndex, section: 0)
+        collectionView?.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition(), animated: true)
         setTitleForIndex(menuIndex)
     }
     
-    private func setTitleForIndex(index: Int) {
+    fileprivate func setTitleForIndex(_ index: Int) {
         if let titleLabel = navigationItem.titleView as? UILabel {
             titleLabel.text = "  \(titles[index])"
         }
@@ -148,37 +148,37 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }
     
-    func showControllerForSetting(setting: Setting){
+    func showControllerForSetting(_ setting: Setting){
         let dummySettingsViewController = UIViewController()
-        dummySettingsViewController.view.backgroundColor = UIColor.whiteColor()
+        dummySettingsViewController.view.backgroundColor = UIColor.white
         dummySettingsViewController.navigationItem.title = setting.name.rawValue
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.tintColor = UIColor.white
         
         
         navigationController?.pushViewController(dummySettingsViewController, animated: true)
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         menuBar.horizontalBarLerftAnchorConstraint?.constant = scrollView.contentOffset.x / 4
     }
     
-    override func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        let index = Int(targetContentOffset.memory.x / view.frame.width)
+        let index = Int(targetContentOffset.pointee.x / view.frame.width)
         
-        let indexPath = NSIndexPath(forItem: index, inSection: 0)
-        menuBar.collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .None)
+        let indexPath = IndexPath(item: index, section: 0)
+        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition())
         
         
         setTitleForIndex(index)
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let identifier: String
         
@@ -194,13 +194,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             identifier = accountCellId
         }
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(view.frame.width, view.frame.height - 50)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height - 50)
     }
 
 
