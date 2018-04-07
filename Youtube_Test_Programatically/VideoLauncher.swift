@@ -70,7 +70,7 @@ class VideoPlayerView: UIView {
         return slider
     }()
     
-    func handleSliderChange(){
+    @objc func handleSliderChange(){
         //print(videoSlider.value)
         
         if let duration = player?.currentItem?.duration {
@@ -173,7 +173,7 @@ class VideoPlayerView: UIView {
         }
     }
     
-    func handlePause() {
+    @objc func handlePause() {
         
         if isPlaying {
             player?.pause()

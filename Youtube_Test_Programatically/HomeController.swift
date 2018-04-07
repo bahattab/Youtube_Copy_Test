@@ -119,7 +119,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationItem.rightBarButtonItems = [moreButton, searchBarButtonItem]
     }
     
-    func handleSearch(){
+    @objc func handleSearch(){
         
     }
     
@@ -142,7 +142,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
     }()
     
-    func handleMore(){
+    @objc func handleMore(){
         //Show Menu
         settingsLauncher.showSettings()
         
@@ -152,7 +152,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let dummySettingsViewController = UIViewController()
         dummySettingsViewController.view.backgroundColor = UIColor.white
         dummySettingsViewController.navigationItem.title = setting.name.rawValue
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
         
         
